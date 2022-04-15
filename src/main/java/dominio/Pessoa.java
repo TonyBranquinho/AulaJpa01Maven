@@ -2,10 +2,18 @@ package dominio;
 
 import java.io.Serializable;
 
-public class Pessoa implements Serializable{
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
+public class Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Integer Id;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String nome;
 	private String email;
 
@@ -14,17 +22,17 @@ public class Pessoa implements Serializable{
 
 	public Pessoa(Integer id, String nome, String email) {
 		super();
-		Id = id;
+		this.id = id;
 		this.nome = nome;
 		this.email = email;
 	}
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -45,7 +53,7 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [Id=" + Id + ", nome=" + nome + ", email=" + email + "]";
+		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + "]";
 	}
 
 }
